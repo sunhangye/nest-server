@@ -1,0 +1,21 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Query {
+  find(id: String!): Boolean!
+}
+
+type Mutation {
+  create(params: UserInput!): Boolean!
+  update(id: String!, params: UserInput!): Boolean!
+  del(id: String!): Boolean!
+}
+
+input UserInput {
+  """昵称"""
+  name: String!
+
+  """简介"""
+  description: String!
+}

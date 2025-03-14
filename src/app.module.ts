@@ -2,7 +2,9 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import {TypeOrmModule} from "@nestjs/typeorm";
-import {UserModule} from "./module/user.module";
+import {UserModule} from "./modules/user/user.module";
+import {GraphQLModule} from "@nestjs/graphql";
+import {ApolloDriver} from "@nestjs/apollo";
 
 @Module({
   imports: [
@@ -17,6 +19,10 @@ import {UserModule} from "./module/user.module";
           entities: [__dirname + '/**/*.entity{.ts,.js}'],
           synchronize: true,
           autoLoadEntities: true,
+      }),
+      GraphQLModule.forRoot({
+          driver: ApolloDriver,
+          autoSchemaFile: './schema.gql',
       }),
       UserModule,
   ],
